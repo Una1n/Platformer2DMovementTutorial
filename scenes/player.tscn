@@ -1,8 +1,9 @@
-[gd_scene load_steps=6 format=3 uid="uid://cryvwwp5pcgj3"]
+[gd_scene load_steps=7 format=3 uid="uid://cryvwwp5pcgj3"]
 
 [ext_resource type="Texture2D" uid="uid://bitnd0xdly5pu" path="res://assets/Player/player.png" id="1_nf1xd"]
 [ext_resource type="Script" path="res://scripts/gravity_component.gd" id="2_ckm3a"]
 [ext_resource type="Script" path="res://scripts/movement_component.gd" id="3_t14b8"]
+[ext_resource type="Script" path="res://scripts/jump_component.gd" id="4_57e4w"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_lpcom"]
 radius = 8.0
@@ -28,6 +29,11 @@ region_rect = Rect2(5, 8, 21, 25)
 script = ExtResource("2_ckm3a")
 character = NodePath("..")
 
-[node name="MovementComponent" type="Node" parent="." node_paths=PackedStringArray("character")]
+[node name="MovementComponent" type="Node" parent="." node_paths=PackedStringArray("character", "sprite")]
 script = ExtResource("3_t14b8")
+character = NodePath("..")
+sprite = NodePath("../Sprite2D")
+
+[node name="JumpComponent" type="Node" parent="." node_paths=PackedStringArray("character")]
+script = ExtResource("4_57e4w")
 character = NodePath("..")
