@@ -1,7 +1,8 @@
-[gd_scene load_steps=9 format=3 uid="uid://bxmpqpttxiihe"]
+[gd_scene load_steps=10 format=3 uid="uid://bxmpqpttxiihe"]
 
 [ext_resource type="Texture2D" uid="uid://dgiorn4n27wjc" path="res://assets/Tileset/tileset.png" id="1_0vuox"]
 [ext_resource type="Texture2D" uid="uid://brkrqr0js2snh" path="res://assets/Background/back.png" id="1_3mmso"]
+[ext_resource type="Script" path="res://scripts/game.gd" id="1_k4h6u"]
 [ext_resource type="Texture2D" uid="uid://d0jfuqvr6nsf8" path="res://assets/Background/middle.png" id="2_g1l4r"]
 [ext_resource type="Texture2D" uid="uid://bas2iwiygrd1h" path="res://assets/Background/props.png" id="2_isvuy"]
 [ext_resource type="PackedScene" uid="uid://cryvwwp5pcgj3" path="res://scenes/player.tscn" id="5_wc3tc"]
@@ -803,6 +804,7 @@ sources/0 = SubResource("TileSetAtlasSource_4mf3l")
 sources/1 = SubResource("TileSetAtlasSource_c8sox")
 
 [node name="Game" type="Node2D"]
+script = ExtResource("1_k4h6u")
 
 [node name="World" type="Node2D" parent="."]
 
