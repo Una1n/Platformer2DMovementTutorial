@@ -1,3 +1,4 @@
+class_name JumpComponent
 extends Node
 
 
@@ -12,6 +13,8 @@ var jumping: bool = false
 var coyote_timer: Timer = null
 var coyote_jump: bool = false
 var last_frame_on_floor: bool = false
+var is_jumping: bool = false
+var is_falling: bool = false
 
 
 func _ready() -> void:
@@ -39,8 +42,10 @@ func _physics_process(_delta: float) -> void:
 		coyote_jump = true
 		coyote_timer.start()
 
-	last_frame_on_floor = character.is_on_floor()
+	is_jumping = character.velocity.y < 0
+	is_falling = character.velocity.y > 0
 
+	last_frame_on_floor = character.is_on_floor()
 
 func _on_coyote_timeout() -> void:
 	coyote_jump = false
