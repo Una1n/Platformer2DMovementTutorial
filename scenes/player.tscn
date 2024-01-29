@@ -14,10 +14,10 @@
 [ext_resource type="Texture2D" uid="uid://1u8cmiqky363" path="res://assets/Player/run/player-run-5.png" id="9_xcrnk"]
 [ext_resource type="Texture2D" uid="uid://b483gdrdy3858" path="res://assets/Player/run/player-run-6.png" id="10_k4q7r"]
 [ext_resource type="PackedScene" uid="uid://cxngxmghspqes" path="res://scenes/components/input_component.tscn" id="14_fxsqv"]
-[ext_resource type="PackedScene" uid="uid://d1xktuy8xayqs" path="res://scenes/components/jump_component.tscn" id="15_8qowv"]
 [ext_resource type="PackedScene" uid="uid://buvqtqvjs7xyd" path="res://scenes/components/movement_component.tscn" id="16_blkdj"]
 [ext_resource type="PackedScene" uid="uid://p1v2ehekli0j" path="res://scenes/components/gravity_component.tscn" id="16_onf57"]
 [ext_resource type="PackedScene" uid="uid://c0fr2eajw41q6" path="res://scenes/components/animation_component.tscn" id="16_t80da"]
+[ext_resource type="PackedScene" uid="uid://dcv6epida4vki" path="res://scenes/components/adv_jump_component.tscn" id="18_7mkky"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_lpcom"]
 radius = 8.0
@@ -87,7 +87,7 @@ script = ExtResource("1_5t2y6")
 input_component = NodePath("InputComponent")
 gravity_component = NodePath("GravityComponent")
 movement_component = NodePath("MovementComponent")
-jump_component = NodePath("JumpComponent")
+jump_component = NodePath("AdvancedJumpComponent")
 animation_component = NodePath("AnimationComponent")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
@@ -105,7 +105,7 @@ animation = &"idle"
 
 [node name="MovementComponent" parent="." instance=ExtResource("16_blkdj")]
 
-[node name="JumpComponent" parent="." instance=ExtResource("15_8qowv")]
-
 [node name="AnimationComponent" parent="." node_paths=PackedStringArray("sprite") instance=ExtResource("16_t80da")]
 sprite = NodePath("../AnimatedSprite2D")
+
+[node name="AdvancedJumpComponent" parent="." instance=ExtResource("18_7mkky")]

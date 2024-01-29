@@ -5,7 +5,7 @@ extends CharacterBody2D
 @export var input_component: InputComponent
 @export var gravity_component: GravityComponent
 @export var movement_component: MovementComponent
-@export var jump_component: JumpComponent
+@export var jump_component: AdvancedJumpComponent
 @export var animation_component: AnimationComponent
 
 
