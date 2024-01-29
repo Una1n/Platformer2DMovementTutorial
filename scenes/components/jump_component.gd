@@ -8,8 +8,12 @@ extends Node
 var is_jumping: bool = false
 
 
-func handle_jump(body: CharacterBody2D, want_to_jump: bool) -> void:
+func handle_jump(body: CharacterBody2D, want_to_jump: bool, jump_released: bool) -> void:
 	if want_to_jump and body.is_on_floor():
 		body.velocity.y = jump_velocity
 
 	is_jumping = body.velocity.y < 0 and not body.is_on_floor()
+
+	# Variable Jump Height
+	if jump_released and is_jumping:
+		body.velocity.y = 0
