@@ -107,6 +107,5 @@ animation = &"idle"
 
 [node name="JumpComponent" parent="." instance=ExtResource("15_8qowv")]
 
-[node name="AnimationComponent" parent="." node_paths=PackedStringArray("jump_component", "sprite") instance=ExtResource("16_t80da")]
-jump_component = NodePath("../JumpComponent")
+[node name="AnimationComponent" parent="." node_paths=PackedStringArray("sprite") instance=ExtResource("16_t80da")]
 sprite = NodePath("../AnimatedSprite2D")
