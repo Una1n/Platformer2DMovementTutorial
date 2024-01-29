@@ -21,7 +21,7 @@
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_lpcom"]
 radius = 8.0
-height = 22.0
+height = 20.0
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_e18ok"]
 animations = [{
@@ -92,10 +92,10 @@ animation_component = NodePath("AnimationComponent")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 z_index = 1
-position = Vector2(-1, 4)
 shape = SubResource("CapsuleShape2D_lpcom")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+position = Vector2(1, -5)
 sprite_frames = SubResource("SpriteFrames_e18ok")
 animation = &"idle"
 
