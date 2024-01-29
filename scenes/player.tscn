@@ -1,12 +1,10 @@
-[gd_scene load_steps=19 format=3 uid="uid://cryvwwp5pcgj3"]
+[gd_scene load_steps=21 format=3 uid="uid://cryvwwp5pcgj3"]
 
+[ext_resource type="Script" path="res://scripts/player.gd" id="1_5t2y6"]
 [ext_resource type="Texture2D" uid="uid://c8ts1466ganhs" path="res://assets/Player/idle/player-idle-1.png" id="1_ab50b"]
 [ext_resource type="Texture2D" uid="uid://dkkgn02xuex81" path="res://assets/Player/jump/player-jump-2.png" id="1_q00qy"]
-[ext_resource type="Script" path="res://scripts/gravity_component.gd" id="2_ckm3a"]
 [ext_resource type="Texture2D" uid="uid://dc3epq3eugipi" path="res://assets/Player/idle/player-idle-2.png" id="2_fd50u"]
-[ext_resource type="Script" path="res://scripts/movement_component.gd" id="3_t14b8"]
 [ext_resource type="Texture2D" uid="uid://bg574lllcitqg" path="res://assets/Player/idle/player-idle-3.png" id="3_xujdu"]
-[ext_resource type="Script" path="res://scripts/jump_component.gd" id="4_57e4w"]
 [ext_resource type="Texture2D" uid="uid://vw4hpjdhyufi" path="res://assets/Player/idle/player-idle-4.png" id="4_o60ui"]
 [ext_resource type="Texture2D" uid="uid://bu1hax5nrsgxs" path="res://assets/Player/run/player-run-1.png" id="5_dc25j"]
 [ext_resource type="Texture2D" uid="uid://bx4r3dlkwpb8n" path="res://assets/Player/jump/player-jump-1.png" id="6_1fxbx"]
@@ -15,7 +13,11 @@
 [ext_resource type="Texture2D" uid="uid://cgdp3xxm88j2x" path="res://assets/Player/run/player-run-4.png" id="8_vkmjt"]
 [ext_resource type="Texture2D" uid="uid://1u8cmiqky363" path="res://assets/Player/run/player-run-5.png" id="9_xcrnk"]
 [ext_resource type="Texture2D" uid="uid://b483gdrdy3858" path="res://assets/Player/run/player-run-6.png" id="10_k4q7r"]
-[ext_resource type="Script" path="res://scripts/animation_component.gd" id="16_icdhl"]
+[ext_resource type="PackedScene" uid="uid://cxngxmghspqes" path="res://scenes/components/input_component.tscn" id="14_fxsqv"]
+[ext_resource type="PackedScene" uid="uid://d1xktuy8xayqs" path="res://scenes/components/jump_component.tscn" id="15_8qowv"]
+[ext_resource type="PackedScene" uid="uid://buvqtqvjs7xyd" path="res://scenes/components/movement_component.tscn" id="16_blkdj"]
+[ext_resource type="PackedScene" uid="uid://p1v2ehekli0j" path="res://scenes/components/gravity_component.tscn" id="16_onf57"]
+[ext_resource type="PackedScene" uid="uid://c0fr2eajw41q6" path="res://scenes/components/animation_component.tscn" id="16_t80da"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_lpcom"]
 radius = 8.0
@@ -80,7 +82,13 @@ animations = [{
 "speed": 5.0
 }]
 
-[node name="Player" type="CharacterBody2D"]
+[node name="Player" type="CharacterBody2D" node_paths=PackedStringArray("input_component", "gravity_component", "movement_component", "jump_component", "animation_component")]
+script = ExtResource("1_5t2y6")
+input_component = NodePath("InputComponent")
+gravity_component = NodePath("GravityComponent")
+movement_component = NodePath("MovementComponent")
+jump_component = NodePath("JumpComponent")
+animation_component = NodePath("AnimationComponent")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 z_index = 1
@@ -91,20 +99,14 @@ shape = SubResource("CapsuleShape2D_lpcom")
 sprite_frames = SubResource("SpriteFrames_e18ok")
 animation = &"idle"
 
-[node name="GravityComponent" type="Node" parent="." node_paths=PackedStringArray("character")]
-script = ExtResource("2_ckm3a")
-character = NodePath("..")
+[node name="InputComponent" parent="." instance=ExtResource("14_fxsqv")]
 
-[node name="MovementComponent" type="Node" parent="." node_paths=PackedStringArray("character")]
-script = ExtResource("3_t14b8")
-character = NodePath("..")
+[node name="GravityComponent" parent="." instance=ExtResource("16_onf57")]
 
-[node name="JumpComponent" type="Node" parent="." node_paths=PackedStringArray("character")]
-script = ExtResource("4_57e4w")
-character = NodePath("..")
+[node name="MovementComponent" parent="." instance=ExtResource("16_blkdj")]
 
-[node name="AnimationComponent" type="Node" parent="." node_paths=PackedStringArray("movement_component", "jump_component", "sprite")]
-script = ExtResource("16_icdhl")
-movement_component = NodePath("../MovementComponent")
+[node name="JumpComponent" parent="." instance=ExtResource("15_8qowv")]
+
+[node name="AnimationComponent" parent="." node_paths=PackedStringArray("jump_component", "sprite") instance=ExtResource("16_t80da")]
 jump_component = NodePath("../JumpComponent")
 sprite = NodePath("../AnimatedSprite2D")
