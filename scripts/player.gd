@@ -1,13 +1,11 @@
 extends CharacterBody2D
 
-
 @export_subgroup("Nodes")
 @export var input_component: InputComponent
 @export var gravity_component: GravityComponent
 @export var movement_component: MovementComponent
 @export var jump_component: AdvancedJumpComponent
 @export var animation_component: AnimationComponent
-
 
 func _physics_process(delta: float) -> void:
 	gravity_component.handle_gravity(self, delta)
