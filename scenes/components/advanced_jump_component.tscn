@@ -1,9 +1,9 @@
 [gd_scene load_steps=2 format=3 uid="uid://dcv6epida4vki"]
 
-[ext_resource type="Script" path="res://scenes/components/adv_jump_component.gd" id="1_ycto8"]
+[ext_resource type="Script" path="res://scenes/components/advanced_jump_component.gd" id="1_xujpe"]
 
 [node name="AdvancedJumpComponent" type="Node" node_paths=PackedStringArray("jump_buffer_timer", "coyote_timer")]
-script = ExtResource("1_ycto8")
+script = ExtResource("1_xujpe")
 jump_buffer_timer = NodePath("JumpBufferTimer")
 coyote_timer = NodePath("CoyoteTimer")
 
